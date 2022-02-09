@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTime } from "react-timer-hook";
 function Header() {
   const menuItems = [
     {
@@ -15,11 +16,17 @@ function Header() {
       KEY: "/projects",
     },
   ];
+  const { seconds, minutes, hours, ampm } = useTime({ format: "12-hour" });
+
   return (
     <div className="text-white font-mont">
       <div className="flex bg-theme justify-between items-center p-2 shadow-lg">
         <div>
-          <h1 className="text-4xl font-bold">VIJESH</h1>
+          <h1 className="text-4xl font-bold">Portfolio Website</h1>
+        </div>
+        <div className="font-lg bg-blue-400 p-2 rounded-md">
+          <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+          <span>{ampm}</span>
         </div>
         <div className="flex">
           {menuItems.map((item) => {
